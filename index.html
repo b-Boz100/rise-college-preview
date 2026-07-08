@@ -105,7 +105,11 @@
 
   /* hero */
   .hero{ padding:64px 0 0; border-bottom:3px solid var(--ink); }
-  .hero-top{ display:flex; align-items:flex-start; gap:24px; flex-wrap:wrap; }
+  .hero-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  .sticker-cluster{ display:flex; align-items:center; gap:8px; }
+  .sticker{ width:62px; height:62px; flex-shrink:0; display:block; }
+  .sticker.s1{ transform:rotate(-9deg); }
+  .sticker.s2{ transform:rotate(11deg); margin-top:14px; }
   .hero h1{ font-size:clamp(2.6rem,7vw,5.2rem); margin-top:22px; }
   .hero h1 .pop{
     background:var(--orange); color:var(--ink); padding:0 0.12em;
@@ -272,6 +276,16 @@
   <div class="wrap">
     <div class="hero-top">
       <div class="tag"><span class="ast">*</span>Coming soon &middot; Woolloongabba, Brisbane &middot; Opening 2027</div>
+      <div class="sticker-cluster" aria-hidden="true">
+        <svg class="sticker s1" viewBox="0 0 48 48">
+          <path d="M27 2 L10 27 H20 L16 46 L39 19 H27 Z" fill="var(--ink)" transform="translate(3,4)"/>
+          <path d="M27 2 L10 27 H20 L16 46 L39 19 H27 Z" fill="var(--butter)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <svg class="sticker s2" viewBox="0 0 48 48">
+          <path d="M24 42 C10 32 4 23 4 15 C4 8 9 3 16 3 C20 3 23 5 24 8 C25 5 28 3 32 3 C39 3 44 8 44 15 C44 23 38 32 24 42 Z" fill="var(--ink)" transform="translate(3,4)"/>
+          <path d="M24 42 C10 32 4 23 4 15 C4 8 9 3 16 3 C20 3 23 5 24 8 C25 5 28 3 32 3 C39 3 44 8 44 15 C44 23 38 32 24 42 Z" fill="var(--purple)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+      </div>
     </div>
     <h1>A new kind of <span class="pop">school</span> is coming to Woolloongabba.</h1>
     <p class="lede">R.I.S.E. College is a new alternative secondary school opening in 2027, built for young people aged 14&ndash;18 who are ready for something different. Real-world learning, genuine support and pathways that actually go somewhere.</p>
