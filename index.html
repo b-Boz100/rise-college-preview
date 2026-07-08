@@ -136,9 +136,13 @@
   /* cards */
   .cards{ display:grid; grid-template-columns:1fr 1fr; }
   .card{
+    position:relative;
     padding:52px 44px; border-right:3px solid var(--ink); border-bottom:3px solid var(--ink);
     display:flex; flex-direction:column;
   }
+  .card .sticker-corner{ position:absolute; top:-18px; right:26px; width:54px; height:54px; z-index:2; }
+  .card .sticker-corner.rot-a{ transform:rotate(-10deg); }
+  .card .sticker-corner.rot-b{ transform:rotate(9deg); }
   .card:last-child{ border-right:none; }
   .card.recruit{ background:var(--indigo); color:var(--white); }
   .card.family{ background:var(--lilac); color:var(--ink); }
@@ -205,6 +209,8 @@
   /* register */
   .register{ background:var(--ink); color:var(--white); padding:96px 0; }
   .register .tag{ background:var(--orange); color:var(--ink); }
+  .register .tag-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .register .sticker.reg{ width:56px; height:56px; transform:rotate(-8deg); }
   .register h2{ font-size:2.3rem; margin-top:16px; color:var(--white); }
   .register > .wrap > p.sub{ margin-top:14px; max-width:520px; opacity:0.8; }
   .form-card{
@@ -312,12 +318,29 @@
 
 <section class="cards" id="recruitment">
   <div class="card recruit">
+    <svg class="sticker-corner rot-a" aria-hidden="true" viewBox="0 0 48 48">
+      <path d="M24 2 L29.5 17 L46 17 L32.5 27 L37.5 44 L24 34 L10.5 44 L15.5 27 L2 17 L18.5 17 Z" fill="var(--ink)" transform="translate(3,4)"/>
+      <path d="M24 2 L29.5 17 L46 17 L32.5 27 L37.5 44 L24 34 L10.5 44 L15.5 27 L2 17 L18.5 17 Z" fill="var(--orange)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
     <div class="tag"><span class="ast">*</span>For educators</div>
     <h3>Are you an educator ready to build something that matters?</h3>
     <p>We're currently recruiting a founding Principal and key staff to bring R.I.S.E. College to life. This is a rare opportunity to help shape a school from the ground up, from its culture and curriculum to its community.</p>
     <a class="btn" href="recruitment.html">Contact our recruitment team &rarr;</a>
   </div>
   <div class="card family">
+    <svg class="sticker-corner rot-b" aria-hidden="true" viewBox="0 0 48 48">
+      <g transform="translate(3,4)" fill="var(--ink)" stroke="var(--ink)">
+        <rect x="4" y="6" width="40" height="28" rx="8"/>
+        <polygon points="14,34 10,44 22,34"/>
+      </g>
+      <g fill="var(--butter)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round">
+        <rect x="4" y="6" width="40" height="28" rx="8"/>
+        <polygon points="14,34 10,44 22,34"/>
+      </g>
+      <circle cx="17" cy="19" r="1.8" fill="var(--ink)"/>
+      <circle cx="31" cy="19" r="1.8" fill="var(--ink)"/>
+      <path d="M15 24 q9 7 18 0" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
     <div class="tag"><span class="ast">*</span>For families &amp; young people</div>
     <h3>Interested in R.I.S.E. College for 2027?</h3>
     <p>Whether you're a young person looking for a fresh start, or a parent or carer exploring options, we'd love to hear from you. Register your interest and we'll keep you updated as enrolments open.</p>
@@ -424,7 +447,13 @@
 
 <section class="register" id="register">
   <div class="wrap">
-    <div class="tag"><span class="ast">*</span>Stay in the loop</div>
+    <div class="tag-row">
+      <div class="tag"><span class="ast">*</span>Stay in the loop</div>
+      <svg class="sticker reg" aria-hidden="true" viewBox="0 0 48 48">
+        <path d="M6 2 L6 34 L14 27 L20 40 L26 37 L20 24 L30 24 Z" fill="var(--ink)" transform="translate(3,4)"/>
+        <path d="M6 2 L6 34 L14 27 L20 40 L26 37 L20 24 L30 24 Z" fill="var(--butter)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+    </div>
     <h2>Register your interest in R.I.S.E. College</h2>
     <p class="sub">Register your interest and we'll keep you updated as enrolments open.</p>
 
