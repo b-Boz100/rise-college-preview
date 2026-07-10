@@ -1,4 +1,5 @@
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>R.I.S.E. College &mdash; recruitment</title>
 <style>
   :root{
@@ -72,6 +73,12 @@
   }
   nav a:hover{ border-color:var(--ink); }
   nav a.current{ border-color:var(--ink); background:var(--butter); }
+  .nav-toggle{
+    display:none; margin-left:auto;
+    background:none; border:2px solid var(--ink); border-radius:8px;
+    width:42px; height:42px; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .nav-toggle svg{ width:20px; height:20px; }
   .social{ display:flex; gap:10px; align-items:center; }
   .social a{
     width:36px; height:36px; border-radius:8px; border:2px solid var(--ink);
@@ -160,7 +167,17 @@
   footer .fine{ margin-top:22px; font-size:0.75rem; opacity:0.55; border-top:2px solid var(--ink); padding-top:16px; }
 
   @media (max-width:860px){
-    nav ul{ display:none; }
+    .nav-toggle{ display:flex; }
+    header .social{ display:none; }
+    nav ul{
+      display:none; flex-direction:column; gap:0; margin:0;
+      position:absolute; left:0; right:0; top:100%;
+      background:var(--white); border-bottom:3px solid var(--ink);
+      padding:6px 24px 18px;
+    }
+    nav ul.open{ display:flex; }
+    nav a{ width:100%; padding:14px 4px; border-bottom:1px solid var(--line); border-radius:0; }
+    nav a:last-child{ border-bottom:none; }
     .hero-strip{ grid-template-columns:repeat(3,1fr); }
     .dual .grid{ grid-template-columns:1fr; }
     .dual .col:first-child{ border-right:none; border-bottom:3px solid var(--ink); }
@@ -169,13 +186,25 @@
     .vacancy-card .photo{ border-right:none; border-bottom:3px solid var(--ink); aspect-ratio:16/10; }
     .form-grid{ grid-template-columns:1fr; }
   }
+  @media (max-width:480px){
+    .nav-row{ padding:14px 0; }
+    .logo{ font-size:1.02rem; }
+    .hero{ padding:40px 0 0; }
+    .vacancies, .register, .dual{ padding-top:48px; padding-bottom:48px; }
+    .register{ padding:56px 0; }
+    .form-card{ padding:26px; }
+    .vacancy-card .body{ padding:28px 24px; }
+  }
 </style>
 
 <header>
   <div class="wrap nav-row">
     <a class="logo" href="index.html">R.I.S.E. College <span class="ast">*</span></a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <nav>
-      <ul>
+      <ul id="site-nav">
         <li><a href="index.html#about">About</a></li>
         <li><a href="recruitment.html" class="current">Recruitment</a></li>
         <li><a href="index.html#register">Register your interest</a></li>
@@ -333,5 +362,17 @@
   document.getElementById('recruit-form').addEventListener('submit', function(e){
     e.preventDefault();
     document.getElementById('recruit-success').classList.add('show');
+  });
+  var navToggle = document.getElementById('nav-toggle');
+  var siteNav = document.getElementById('site-nav');
+  navToggle.addEventListener('click', function(){
+    var isOpen = siteNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  siteNav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      siteNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
   });
 </script>
